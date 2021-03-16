@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1614455089056,
+  "lastUpdate": 1615895294947,
   "repoUrl": "https://github.com/EmbarkStudios/tokio",
   "entries": {
     "rt_multi_threaded": [
@@ -245,6 +245,60 @@ window.BENCHMARK_DATA = {
             "name": "read_uncontended",
             "value": 578,
             "range": "± 123",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "zaharidichev@gmail.com",
+            "name": "Zahari Dichev",
+            "username": "zaharidichev"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "e6a9167bb7012f23640f5022bd97740d7829c4b1",
+          "message": "runtime: avoid unnecessary polling of block_on future (#3582)",
+          "timestamp": "2021-03-16T10:30:18+01:00",
+          "tree_id": "02f2d79b68e3be88d573da55b949691d732423c0",
+          "url": "https://github.com/EmbarkStudios/tokio/commit/e6a9167bb7012f23640f5022bd97740d7829c4b1"
+        },
+        "date": 1615895294154,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "read_concurrent_contended",
+            "value": 819,
+            "range": "± 275",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "read_concurrent_contended_multi",
+            "value": 14119,
+            "range": "± 4921",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "read_concurrent_uncontended",
+            "value": 852,
+            "range": "± 199",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "read_concurrent_uncontended_multi",
+            "value": 14927,
+            "range": "± 4948",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "read_uncontended",
+            "value": 449,
+            "range": "± 66",
             "unit": "ns/iter"
           }
         ]
