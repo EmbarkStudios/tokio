@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1615895301888,
+  "lastUpdate": 1615895317267,
   "repoUrl": "https://github.com/EmbarkStudios/tokio",
   "entries": {
     "rt_multi_threaded": [
@@ -47,6 +47,54 @@ window.BENCHMARK_DATA = {
             "name": "yield_many",
             "value": 20296480,
             "range": "± 2697044",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "zaharidichev@gmail.com",
+            "name": "Zahari Dichev",
+            "username": "zaharidichev"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "e6a9167bb7012f23640f5022bd97740d7829c4b1",
+          "message": "runtime: avoid unnecessary polling of block_on future (#3582)",
+          "timestamp": "2021-03-16T10:30:18+01:00",
+          "tree_id": "02f2d79b68e3be88d573da55b949691d732423c0",
+          "url": "https://github.com/EmbarkStudios/tokio/commit/e6a9167bb7012f23640f5022bd97740d7829c4b1"
+        },
+        "date": 1615895316346,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "chained_spawn",
+            "value": 196608,
+            "range": "± 48543",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "ping_pong",
+            "value": 689180,
+            "range": "± 61095",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "spawn_many",
+            "value": 4962403,
+            "range": "± 609229",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "yield_many",
+            "value": 20836945,
+            "range": "± 2551343",
             "unit": "ns/iter"
           }
         ]
