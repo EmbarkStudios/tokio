@@ -11,7 +11,7 @@ use std::{
     ffi::{OsStr, OsString},
     fs::OpenOptions,
     future::Future,
-    io::{self, ErrorKind, IoSlice, Result},
+    io::{self, ErrorKind, IoSlice, Result, Read, Write},
     mem,
     os::windows::prelude::*,
     pin::Pin,
@@ -326,13 +326,13 @@ impl NamedPipe {
     pub fn try_read(&self, buf: &mut [u8]) -> io::Result<usize> {
         self.io_ref()
             .registration()
-            .try_io(Interest::READABLE, || (&*self.io_ref()).read(buf))
+            .try_io(Interest::READABLE, || (&*(*self.io_ref())).read(buf))
     }
 
     pub fn try_write(&self, buf: &[u8]) -> io::Result<usize> {
         self.io_ref()
             .registration()
-            .try_io(Interest::WRITABLE, || (&*self.io_ref()).write(buf))
+            .try_io(Interest::WRITABLE, || (&*(*self.io_ref())).write(buf))
     }
 }
 
