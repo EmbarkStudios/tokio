@@ -234,6 +234,7 @@ impl NamedPipe {
         })
     }
 
+    #[inline]
     fn io_ref(&self) -> &PollEvented<MioNamedPipe> {
         match &self.inner {
             NamedPipeInner::Client(io) | NamedPipeInner::Server(io) => io,
@@ -320,6 +321,18 @@ impl NamedPipe {
     pub async fn writable(&self) -> Result<()> {
         self.ready(Interest::WRITABLE).await?;
         Ok(())
+    }
+
+    pub fn try_read(&self, buf: &mut [u8]) -> io::Result<usize> {
+        self.io_ref()
+            .registration()
+            .try_io(Interest::READABLE, || (&*self.io_ref()).read(buf))
+    }
+
+    pub fn try_write(&self, buf: &[u8]) -> io::Result<usize> {
+        self.io_ref()
+            .registration()
+            .try_io(Interest::WRITABLE, || (&*self.io_ref()).write(buf))
     }
 }
 
